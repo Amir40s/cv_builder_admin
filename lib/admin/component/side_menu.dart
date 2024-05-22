@@ -21,7 +21,7 @@ class SideMenu extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            DrawerHeader(
+            const DrawerHeader(
               // child: Image.asset("assets/images/logo.png"),
               child: Center(
                   child: Text(
@@ -32,7 +32,7 @@ class SideMenu extends StatelessWidget {
             ),
 
             Padding(
-              padding: EdgeInsets.only(left: defaultPadding),
+              padding: const EdgeInsets.only(left: defaultPadding),
               child: TextWidget(text: "Main",size: 12.0,color: Colors.black,isBold: true,),
             ),
             Consumer<DataProvider>(
@@ -47,18 +47,18 @@ class SideMenu extends StatelessWidget {
               }
             ),
 
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),
-            SizedBox(
+            const SizedBox(
               height: defaultDrawerHeadHeight,
             ),
             Padding(
-              padding: EdgeInsets.only(left: defaultPadding),
-              child: TextWidget(text: "Reply pending",size: 14.0,color: Colors.black,isBold: true,)
+              padding: const EdgeInsets.only(left: defaultPadding),
+              child: TextWidget(text: "Templates",size: 14.0,color: Colors.black,isBold: true,)
             ),
-            SizedBox(
+            const SizedBox(
               height: defaultDrawerHeadHeight - 5,
             ),
             Consumer<DataProvider>(
@@ -67,31 +67,31 @@ class SideMenu extends StatelessWidget {
                   return DrawerListTile(
                     index: 1,
                     screenIndex: Routes.PENDING_MESSAGES,
-                    title: "Replay pending Message (${data.pendingMessage.toString()})",
+                    title: "Templates (${data.pendingMessage.toString()})",
                     svgSrc: DASHBOARD_SVG,
                   );
                 }
             ),
 
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),
-            SizedBox(
+            const SizedBox(
               height: defaultDrawerHeadHeight,
             ),
             Padding(
-                padding: EdgeInsets.only(left: defaultPadding),
+                padding: const EdgeInsets.only(left: defaultPadding),
                 child: TextWidget(text: "Complete Messages",size: 14.0,color: Colors.black,isBold: true,)
             ),
-            SizedBox(
+            const SizedBox(
               height: defaultDrawerHeadHeight - 5,
             ),
-            DrawerListTile(
+            const DrawerListTile(
               index: 2,
               screenIndex: Routes.COMPLETE_MESSAGE,
               title: "Complete Messages",
-              svgSrc: "assets/icons/menu_dashboard.svg",
+              svgSrc: DASHBOARD_SVG,
             ),
 
 
@@ -119,7 +119,7 @@ class SideMenu extends StatelessWidget {
             // ),
 
             //Sale LIST
-            Divider(
+            const Divider(
               thickness: 0.5,
               color: Colors.black,
             ),

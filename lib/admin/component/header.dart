@@ -8,14 +8,14 @@ import '../controller/MenuAppController.dart';
 
 class Header extends StatelessWidget {
   const Header({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(10.0),
+    padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -32,7 +32,7 @@ class Header extends StatelessWidget {
             TextWidget(text: "Dashboard", color: Colors.black, size: 20.0, isBold: true),
           if (!Responsive.isMobile(context))
             Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-          NotificationCard()
+          const NotificationCard()
         ],
       ),
     );
@@ -41,8 +41,8 @@ class Header extends StatelessWidget {
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,8 @@ class NotificationCard extends StatelessWidget {
       child: Consumer<DataProvider>(
        builder: (context, provider,child){
          return Container(
-             margin: EdgeInsets.only(left: defaultPadding),
-             padding: EdgeInsets.symmetric(
+             margin: const EdgeInsets.only(left: defaultPadding),
+             padding: const EdgeInsets.symmetric(
                horizontal: defaultPadding,
                vertical: defaultPadding / 2,
              ),
@@ -66,7 +66,7 @@ class NotificationCard extends StatelessWidget {
                  Positioned(
                      top: 120,
                      child: TextWidget(text: "12", color: Colors.black, size: 12.0, isBold: true)),
-                 Icon(Icons.notifications,color: Colors.black,)
+                 const Icon(Icons.notifications,color: Colors.black,)
                ],
              )
          );
