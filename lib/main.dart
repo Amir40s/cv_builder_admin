@@ -1,4 +1,5 @@
 import 'package:cv_builder_admin/provider/data_provider.dart';
+import 'package:cv_builder_admin/provider/image_provider.dart';
 import 'package:cv_builder_admin/provider/text_color_provider.dart';
 import 'package:cv_builder_admin/provider/value_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ValueProvider()),
         ChangeNotifierProvider(create: (_) => TextColorProvider()),
         ChangeNotifierProvider(create: (_) => MenuAppController()),
+        ChangeNotifierProvider(create: (_) => MyImageProvider()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
