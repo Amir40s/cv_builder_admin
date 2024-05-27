@@ -47,13 +47,13 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAoI7G7foqcsI-gNZD5LEXc9sfU2X0ONEc',
-    appId: '1:984056689373:web:b37fb6720dc2e00b6ca134',
-    messagingSenderId: '984056689373',
-    projectId: 'hotel-booking-b1d5c',
-    authDomain: 'hotel-booking-b1d5c.firebaseapp.com',
-    storageBucket: 'hotel-booking-b1d5c.appspot.com',
-    measurementId: 'G-18PGEFWN2H',
+    apiKey: 'AIzaSyCSg6YRI_gv6LgeCbdpF4RE-1LWpRp12Kk',
+    appId: '1:726304718737:web:a0d7aaa8c856bf5e9a6430',
+    messagingSenderId: '726304718737',
+    projectId: 'cv-builder-105db',
+    authDomain: 'cv-builder-105db.firebaseapp.com',
+    storageBucket: 'cv-builder-105db.appspot.com',
+    measurementId: 'G-KCJ64YYTFG',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
