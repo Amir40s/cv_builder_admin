@@ -25,9 +25,9 @@ class MainScreen extends StatelessWidget {
         screen = AdminDashboardMessageScreen();
         break;
 
-      case Routes.COMPLETE_MESSAGE:
-        screen = AdminDashboardCompleteScreen();
-        break;
+      // case Routes.COMPLETE_MESSAGE:
+      // screen = AdminDashboardCompleteScreen();
+      //   break;
 
 
       default:

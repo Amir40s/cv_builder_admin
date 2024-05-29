@@ -14,7 +14,7 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Drawer(
-      backgroundColor: primaryColor,
+      backgroundColor: Colors.white,
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -27,7 +27,7 @@ class SideMenu extends StatelessWidget {
                   child: Text(
                 "CV Builder",
                 style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
               )),
             ),
 
@@ -49,7 +49,7 @@ class SideMenu extends StatelessWidget {
 
             const Divider(
               thickness: 0.5,
-              color: Colors.black,
+              color: Colors.grey,
             ),
             const SizedBox(
               height: defaultDrawerHeadHeight,
@@ -75,24 +75,24 @@ class SideMenu extends StatelessWidget {
 
             const Divider(
               thickness: 0.5,
-              color: Colors.black,
+              color: Colors.grey,
             ),
-            const SizedBox(
-              height: defaultDrawerHeadHeight,
-            ),
-            Padding(
-                padding: const EdgeInsets.only(left: defaultPadding),
-                child: TextWidget(text: "Complete Messages",size: 14.0,color: Colors.black,isBold: true,)
-            ),
-            const SizedBox(
-              height: defaultDrawerHeadHeight - 5,
-            ),
-            const DrawerListTile(
-              index: 2,
-              screenIndex: Routes.COMPLETE_MESSAGE,
-              title: "Complete Messages",
-              svgSrc: DASHBOARD_SVG,
-            ),
+            // const SizedBox(
+            //   height: defaultDrawerHeadHeight,
+            // ),
+            // Padding(
+            //     padding: const EdgeInsets.only(left: defaultPadding),
+            //     child: TextWidget(text: "Complete Messages",size: 14.0,color: Colors.black,isBold: true,)
+            // ),
+            // const SizedBox(
+            //   height: defaultDrawerHeadHeight - 5,
+            // ),
+            // const DrawerListTile(
+            //   index: 2,
+            //   screenIndex: Routes.COMPLETE_MESSAGE,
+            //   title: "Complete Messages",
+            //   svgSrc: DASHBOARD_SVG,
+            // ),
 
 
 
@@ -119,10 +119,10 @@ class SideMenu extends StatelessWidget {
             // ),
 
             //Sale LIST
-            const Divider(
-              thickness: 0.5,
-              color: Colors.black,
-            ),
+            // const Divider(
+            //   thickness: 0.5,
+            //   color: Colors.black,
+            // ),
 
           ],
         ),

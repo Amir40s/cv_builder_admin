@@ -1,3 +1,4 @@
+import 'package:cv_builder_admin/provider/save_data_provider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,186 +40,196 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var saveData = Provider.of<SaveDataProvider>(context,listen: false);
     //  notificationFunctions();
-    return SingleChildScrollView(
-      primary: false,
-      padding: EdgeInsets.all(defaultPadding),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-         const Header(),
-          Padding(
-            padding: const EdgeInsets.all(9.0),
-            child: Column(
-              children: [
-                Container(
-                  width: 400.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(color: Colors.blueGrey)
-                  ),
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none
+    return Scaffold(
+      backgroundColor: Color(0xffd2dae0),
+      body: SingleChildScrollView(
+        primary: false,
+        padding: EdgeInsets.all(defaultPadding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Header(),
+            Padding(
+              padding: const EdgeInsets.all(9.0),
+              child: Column(
+                children: [
+                  Container(
+                    width: 400.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(color: Colors.blueGrey)
+                    ),
+                    child: TextFormField(
+                      controller: saveData.categoryController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none
+                        ),
+                        hintText: "Enter Name",
                       ),
-                      hintText: "Enter Name",
                     ),
                   ),
-                ),
-                const SizedBox(height: defaultDrawerHeadHeight,),
-                ButtonWidget(text: "Submit", onClicked: (){}, width: 100.0, height: 50.0)
-              ],
+                  const SizedBox(height: defaultDrawerHeadHeight,),
+                  Consumer<SaveDataProvider>(
+                    builder: (context,value,child){
+                      return ButtonWidget(text: "Submit", onClicked: (){
+                        value.saveData();
+                      }, width: 100.0, height: 50.0);
+                    },
+                  )],
+              ),
             ),
-          ),
 
-          // StreamBuilder(
-          //   stream: firestore
-          //       .collection("requests")
-          //      // .where("code", isEqualTo: "1")
-          //     //  .orderBy('timestamp', descending: true)
-          //   .where("code", isEqualTo: "1")
-          //       .snapshots(),
-          //   builder: (context, snapshot) {
-          //     return (snapshot.connectionState == ConnectionState.waiting)
-          //         ? const Center(
-          //       child: CircularProgressIndicator(
-          //         color: hoverColor,
-          //       ),
-          //     )
-          //         : snapshot.data!.docs.isEmpty
-          //         ? Container(
-          //       padding: const EdgeInsets.all(10.0),
-          //       decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(10.0),
-          //         color: Colors.white,
-          //       ),
-          //       child: Center(
-          //         child: Text(
-          //           "No Requests Found",
-          //           style: TextStyle(
-          //               fontSize: 18.0, fontWeight: FontWeight.bold),
-          //         ),
-          //       ),
-          //     )
-          //         : Container(
-          //       width: double.infinity,
-          //       decoration: BoxDecoration(
-          //           borderRadius: BorderRadius.circular(10)),
-          //       child: PaginatedDataTable(
-          //           header: TextWidget(
-          //             text:
-          //             "Total New Requests: ${snapshot.data!.docs.length}",
-          //             size: 20,
-          //             color: Colors.black,
-          //             isBold: true,
-          //           ),
-          //           headingRowColor:
-          //           MaterialStateProperty.resolveWith<Color>(
-          //                 (Set<MaterialState> states) {
-          //               length = snapshot.data!.docs.length;
-          //               if (length! < snapshot.data!.docs.length) {
-          //                 Get.snackbar("title", " message");
-          //               }
-          //               return primaryColor; // Default color
-          //             },
-          //           ),
-          //           columnSpacing: 20.0,
-          //           arrowHeadColor: Colors.black,
-          //           rowsPerPage: snapshot.data!.docs.length > 10
-          //               ? 10
-          //               : snapshot.data!.docs.length,
-          //           columns:  [
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Name",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Phone Number",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Pick Up",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Drop Off",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Book for now /later",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Book Date / Time",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Car Type",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Driver Notes",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Reply",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //             DataColumn(
-          //               label: TextWidget(
-          //                 text: "Action",
-          //                 color: Colors.black,
-          //                 size: 14.0,
-          //                 isBold: true,
-          //               ),
-          //             ),
-          //           ],
-          //           source: DataTableSourceImpl(
-          //               category: snapshot.data!.docs,
-          //               length: snapshot.data!.docs.length,
-          //               context: context)),
-          //     );
-          //   },
-          // ),
-        ],
+            // StreamBuilder(
+            //   stream: firestore
+            //       .collection("requests")
+            //      // .where("code", isEqualTo: "1")
+            //     //  .orderBy('timestamp', descending: true)
+            //   .where("code", isEqualTo: "1")
+            //       .snapshots(),
+            //   builder: (context, snapshot) {
+            //     return (snapshot.connectionState == ConnectionState.waiting)
+            //         ? const Center(
+            //       child: CircularProgressIndicator(
+            //         color: hoverColor,
+            //       ),
+            //     )
+            //         : snapshot.data!.docs.isEmpty
+            //         ? Container(
+            //       padding: const EdgeInsets.all(10.0),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(10.0),
+            //         color: Colors.white,
+            //       ),
+            //       child: Center(
+            //         child: Text(
+            //           "No Requests Found",
+            //           style: TextStyle(
+            //               fontSize: 18.0, fontWeight: FontWeight.bold),
+            //         ),
+            //       ),
+            //     )
+            //         : Container(
+            //       width: double.infinity,
+            //       decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.circular(10)),
+            //       child: PaginatedDataTable(
+            //           header: TextWidget(
+            //             text:
+            //             "Total New Requests: ${snapshot.data!.docs.length}",
+            //             size: 20,
+            //             color: Colors.black,
+            //             isBold: true,
+            //           ),
+            //           headingRowColor:
+            //           MaterialStateProperty.resolveWith<Color>(
+            //                 (Set<MaterialState> states) {
+            //               length = snapshot.data!.docs.length;
+            //               if (length! < snapshot.data!.docs.length) {
+            //                 Get.snackbar("title", " message");
+            //               }
+            //               return primaryColor; // Default color
+            //             },
+            //           ),
+            //           columnSpacing: 20.0,
+            //           arrowHeadColor: Colors.black,
+            //           rowsPerPage: snapshot.data!.docs.length > 10
+            //               ? 10
+            //               : snapshot.data!.docs.length,
+            //           columns:  [
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Name",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Phone Number",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Pick Up",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Drop Off",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Book for now /later",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Book Date / Time",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Car Type",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Driver Notes",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Reply",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //             DataColumn(
+            //               label: TextWidget(
+            //                 text: "Action",
+            //                 color: Colors.black,
+            //                 size: 14.0,
+            //                 isBold: true,
+            //               ),
+            //             ),
+            //           ],
+            //           source: DataTableSourceImpl(
+            //               category: snapshot.data!.docs,
+            //               length: snapshot.data!.docs.length,
+            //               context: context)),
+            //     );
+            //   },
+            // ),
+          ],
+        ),
       ),
     );
   }

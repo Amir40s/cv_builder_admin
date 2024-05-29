@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants.dart';
 import '../../provider/text_color_provider.dart';
 import '../../responsive.dart';
 import '../controller/MenuAppController.dart';
@@ -52,8 +53,8 @@ class DrawerListTile extends StatelessWidget {
                       horizontalTitleGap: 0.0,
                       leading: SvgPicture.asset(
                         svgSrc,
-                        colorFilter: ColorFilter.mode(textColorProvider.activeIndex == index ? Colors.white :
-                        textColorProvider.hoveredIndex == index ? Colors.black : Colors.white
+                        colorFilter: ColorFilter.mode(textColorProvider.activeIndex == index ? Colors.grey :
+                        textColorProvider.hoveredIndex == index ? primaryColor : Colors.grey
                             , BlendMode.srcIn),
                         height: 16,
                       ),
@@ -61,10 +62,10 @@ class DrawerListTile extends StatelessWidget {
                         title,
                         style: TextStyle(color:
                         textColorProvider.activeIndex == index
-                            ? Colors.black // Change color when actively selected
+                            ? primaryColor // Change color when actively selected
                             : (textColorProvider.hoveredIndex == index
-                            ? Colors.black // Change color on hover
-                            : Colors.white),fontWeight: FontWeight.bold,fontSize: 15
+                            ? primaryColor // Change color on hover
+                            : Colors.grey),fontWeight: FontWeight.bold,fontSize: 15
                         ),
                       )
                   )

@@ -29,7 +29,7 @@ class Header extends StatelessWidget {
               onPressed: context.read<MenuAppController>().controlMenu,
             ),
           if (!Responsive.isMobile(context))
-            TextWidget(text: "Dashboard", color: Colors.black, size: 20.0, isBold: true),
+            TextWidget(text: "Dashboard", color: Colors.white, size: 20.0, isBold: true),
           if (!Responsive.isMobile(context))
             Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
           const NotificationCard()
